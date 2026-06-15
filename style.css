@@ -1,0 +1,441 @@
+/* ===== Theme tokens ===== */
+:root {
+  --bg-1: #f4f7fb;
+  --bg-2: #eaf0fb;
+  --card: #ffffff;
+  --ink: #1c2433;
+  --ink-soft: #5a6577;
+  --ink-faint: #8a93a3;
+  --line: #e6eaf1;
+
+  --accent: #4f7cff;
+  --accent-soft: #eaf0ff;
+  --accent-ink: #2a4bcf;
+
+  --good: #1f9d6b;
+  --good-soft: #e7f6ef;
+
+  --warn: #e08a2b;
+
+  --radius: 18px;
+  --radius-sm: 12px;
+  --shadow: 0 18px 40px -22px rgba(28, 45, 95, 0.35);
+  --shadow-soft: 0 6px 18px -12px rgba(28, 45, 95, 0.3);
+
+  --speed: 180ms;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  height: 100%;
+}
+
+body {
+  font-family: "Inter", "Noto Sans SC", system-ui, sans-serif;
+  color: var(--ink);
+  background: radial-gradient(
+      1200px 600px at 70% -10%,
+      var(--bg-2),
+      transparent 60%
+    ),
+    linear-gradient(180deg, var(--bg-1), #ffffff 80%);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* ===== Home button (fixed top-left during quiz) ===== */
+.home-btn {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 100;
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  background: var(--card);
+  color: var(--ink-soft);
+  box-shadow: var(--shadow-soft);
+  cursor: pointer;
+  transition: color var(--speed) ease, border-color var(--speed) ease,
+    background var(--speed) ease, transform var(--speed) ease;
+}
+
+.home-btn:hover {
+  color: var(--accent-ink);
+  border-color: #c7d3ef;
+  background: #fafbff;
+  transform: translateY(-1px);
+}
+
+.home-btn__icon {
+  width: 20px;
+  height: 20px;
+}
+
+/* ===== Stage / screens ===== */
+.stage {
+  min-height: 100%;
+  display: grid;
+  place-items: center;
+  padding: 32px 20px;
+}
+
+.screen {
+  display: none;
+  width: 100%;
+  max-width: 560px;
+}
+
+.screen.is-active {
+  display: block;
+  animation: fade-in var(--speed) ease-out;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ===== Card ===== */
+.card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 36px 34px;
+}
+
+.card--center {
+  text-align: center;
+}
+
+.card--start {
+  position: relative;
+  overflow: visible;
+  padding-top: 44px;
+}
+
+.start-panda {
+  position: absolute;
+  top: -28px;
+  right: -18px;
+  width: 96px;
+  height: auto;
+  pointer-events: none;
+  user-select: none;
+  filter: drop-shadow(0 8px 14px rgba(28, 45, 95, 0.12));
+  animation: panda-bob 3.2s ease-in-out infinite;
+}
+
+@keyframes panda-bob {
+  0%,
+  100% {
+    transform: translateY(0) rotate(4deg);
+  }
+  50% {
+    transform: translateY(-4px) rotate(-2deg);
+  }
+}
+
+/* ===== Start screen ===== */
+.eyebrow {
+  margin: 0 0 14px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent-ink);
+}
+
+.start-title {
+  margin: 0 0 30px;
+  font-size: 1.85rem;
+  line-height: 1.28;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+}
+
+/* ===== Buttons ===== */
+.btn {
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: 600;
+  border: none;
+  border-radius: var(--radius-sm);
+  padding: 14px 26px;
+  cursor: pointer;
+  transition: transform var(--speed) ease, background var(--speed) ease,
+    box-shadow var(--speed) ease, opacity var(--speed) ease;
+}
+
+.btn--primary {
+  background: var(--accent);
+  color: #fff;
+  box-shadow: var(--shadow-soft);
+}
+
+.btn--primary:hover:not(:disabled) {
+  background: var(--accent-ink);
+  transform: translateY(-1px);
+}
+
+.btn--primary:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.btn:disabled {
+  background: #c9d2e2;
+  color: #eef2f8;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+/* ===== Question head ===== */
+.q-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.progress {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--ink-soft);
+  letter-spacing: 0.04em;
+}
+
+.category-tag {
+  font-size: 0.74rem;
+  font-weight: 600;
+  color: var(--accent-ink);
+  background: var(--accent-soft);
+  padding: 5px 10px;
+  border-radius: 999px;
+}
+
+.progress-bar {
+  height: 6px;
+  background: var(--line);
+  border-radius: 999px;
+  overflow: hidden;
+  margin-bottom: 24px;
+}
+
+.progress-bar__fill {
+  height: 100%;
+  width: 0;
+  background: var(--accent);
+  border-radius: 999px;
+  transition: width var(--speed) ease;
+}
+
+/* ===== Question ===== */
+.question-text {
+  margin: 0 0 22px;
+  font-size: 1.32rem;
+  line-height: 1.4;
+  font-weight: 700;
+}
+
+.options {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.option {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  text-align: left;
+  font-family: inherit;
+  font-size: 1.02rem;
+  font-weight: 500;
+  color: var(--ink);
+  background: #fff;
+  border: 1.5px solid var(--line);
+  border-radius: var(--radius-sm);
+  padding: 15px 16px;
+  cursor: pointer;
+  transition: border-color var(--speed) ease, background var(--speed) ease,
+    transform var(--speed) ease;
+}
+
+.option:hover:not(:disabled) {
+  border-color: #c7d3ef;
+  background: #fafbff;
+}
+
+.option__marker {
+  flex: none;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  border: 1.5px solid var(--line);
+  display: grid;
+  place-items: center;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--ink-faint);
+  transition: all var(--speed) ease;
+}
+
+.option.is-selected {
+  border-color: var(--accent);
+  background: var(--accent-soft);
+}
+
+.option.is-selected .option__marker {
+  border-color: var(--accent);
+  background: var(--accent);
+  color: #fff;
+}
+
+.option.is-correct {
+  border-color: var(--good);
+  background: var(--good-soft);
+}
+
+.option.is-correct .option__marker {
+  border-color: var(--good);
+  background: var(--good);
+  color: #fff;
+}
+
+.option:disabled {
+  cursor: default;
+}
+
+/* ===== Inline correct feedback ===== */
+.feedback {
+  margin-top: 22px;
+  padding: 16px 18px;
+  border-radius: var(--radius-sm);
+  background: var(--good-soft);
+  border: 1px solid #bfe6d2;
+  animation: fade-in var(--speed) ease-out;
+}
+
+.feedback__title {
+  margin: 0 0 4px;
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: var(--good);
+}
+
+.feedback__explanation {
+  margin: 0;
+  font-size: 0.96rem;
+  line-height: 1.45;
+  color: var(--ink-soft);
+}
+
+/* ===== Question actions ===== */
+.q-actions {
+  margin-top: 26px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.q-actions .btn {
+  min-width: 130px;
+}
+
+/* ===== Try Again screen ===== */
+.tryagain-emoji {
+  font-size: 3.2rem;
+  margin-bottom: 10px;
+}
+
+.tryagain-message {
+  margin: 0 0 28px;
+  font-size: 1.4rem;
+  font-weight: 700;
+  line-height: 1.35;
+}
+
+/* shake only on entering the try-again screen */
+#screen-tryagain.is-active .card {
+  animation: fade-in var(--speed) ease-out, shake 360ms ease-out;
+}
+
+@keyframes shake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  20% {
+    transform: translateX(-7px);
+  }
+  40% {
+    transform: translateX(6px);
+  }
+  60% {
+    transform: translateX(-4px);
+  }
+  80% {
+    transform: translateX(3px);
+  }
+}
+
+/* ===== Completion screen ===== */
+.completion-image {
+  width: 100%;
+  max-width: 360px;
+  height: auto;
+  border-radius: var(--radius-sm);
+  margin: 0 auto 22px;
+  display: block;
+  background: var(--accent-soft);
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+}
+
+.completion-line {
+  margin: 0 0 28px;
+  font-size: 1.5rem;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+}
+
+/* ===== Reduced motion ===== */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  .screen.is-active,
+  #screen-tryagain.is-active .card,
+  .feedback {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+/* ===== Small screens (basic fallback) ===== */
+@media (max-width: 520px) {
+  .card {
+    padding: 26px 20px;
+  }
+  .start-title {
+    font-size: 1.55rem;
+  }
+  .question-text {
+    font-size: 1.18rem;
+  }
+}

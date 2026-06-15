@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="300" viewBox="0 0 400 300" role="img" aria-label="Placeholder image">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#eaf0ff"/>
+      <stop offset="1" stop-color="#dfe9ff"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="300" fill="url(#g)"/>
+  <circle cx="200" cy="120" r="34" fill="#c7d3ef"/>
+  <text x="200" y="195" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="16" font-weight="600" fill="#5a6577">replace me with your fun image</text>
+  <text x="200" y="220" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="12" fill="#8a93a3">assets/completion.png</text>
+</svg>
