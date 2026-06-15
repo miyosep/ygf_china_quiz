@@ -132,13 +132,13 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 32px;
-  margin-top: -28px;
+  gap: 36px;
+  margin-top: -56px;
 }
 
 .start-brand {
   margin: 0;
-  font-size: 1.75rem;
+  font-size: 2.2rem;
   font-weight: 800;
   letter-spacing: 0.14em;
   text-transform: uppercase;
@@ -439,7 +439,7 @@ body {
     padding: 26px 20px;
   }
   .start-brand {
-    font-size: 1.45rem;
+    font-size: 1.7rem;
   }
   .start-title {
     font-size: 1.55rem;
